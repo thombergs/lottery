@@ -35,6 +35,10 @@ public class LotteryEndpoint {
 		  @RequestParam("number") int number,
 		  @RequestParam("email") String email) throws MessagingException {
 
+    if(number < 0 || number > 100){
+      return "Number must be between 0 and 100!";
+	}
+
 	Guess guess = Guess.builder()
 			.guessedNumber(number)
 			.email(email)
